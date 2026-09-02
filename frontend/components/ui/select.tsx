@@ -180,12 +180,13 @@ export function SelectItem({
   className?: string;
 }) {
   const ctx = React.useContext(SelectContext);
-  if (!ctx) return null;
   const label = typeof children === "string" ? children : String(children ?? value);
   React.useEffect(() => {
+    if (!ctx) return;
     ctx.register(value, label);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, label]);
+  }, [ctx, value, label]);
+  if (!ctx) return null;
   const selected = ctx.value === value;
   return (
     <button

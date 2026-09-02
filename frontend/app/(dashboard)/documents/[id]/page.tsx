@@ -108,7 +108,7 @@ export default function DocumentDetailPage() {
       }
     }, 3000);
     return () => window.clearInterval(t);
-  }, [docId, doc?.status, load]);
+  }, [docId, doc?.status, load, doc]);
 
   async function handleExport() {
     try {

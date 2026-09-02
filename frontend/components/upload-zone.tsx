@@ -73,7 +73,7 @@ export function UploadZone({
     (list: FileList | File[] | null) => {
       if (!list) return;
       const arr = Array.from(list);
-      const merged = multi ? [...items, ...arr] : [...arr];
+      const merged: File[] = multi ? [...items.map((i) => i.file), ...arr] : arr;
       setItems(
         merged.map((file) => {
           const error = validateFile(file);

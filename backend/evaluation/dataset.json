@@ -1,0 +1,65 @@
+{
+  "version": "1.0",
+  "description": "Evaluation dataset for Document Intelligence Platform extraction & RAG quality.",
+  "documents": [
+    {
+      "id": "doc_invoice_1",
+      "type": "invoice",
+      "content": "ACME CORPORATION\n123 Business Rd\nINVOICE\nInvoice Number: INV-2024-001\nDate: 2024-03-15\nBill To: Jane Doe\nItemized:\nWidget x2 @ 25.00 = 50.00\nGadget x1 @ 75.00 = 75.00\nSubtotal: 125.00\nTax (8%): 10.00\nTotal Due: 135.00",
+      "expected": {
+        "invoice_number": "INV-2024-001",
+        "vendor_name": "ACME CORPORATION",
+        "customer_name": "Jane Doe",
+        "invoice_date": "2024-03-15",
+        "subtotal": "125.00",
+        "tax": "10.00",
+        "total": "135.00"
+      },
+      "field_metrics": ["invoice_number", "vendor_name", "customer_name", "invoice_date", "subtotal", "tax", "total"]
+    },
+    {
+      "id": "doc_receipt_1",
+      "type": "receipt",
+      "content": "CORNER STORE\nReceipt # 88213\nDate: 2023-11-02\nCashier: Mark\nBread ................ $2.50\nMilk ................... $3.00\nTOTAL .................. $5.50\nPayment: Cash",
+      "expected": {
+        "merchant_name": "CORNER STORE",
+        "receipt_number": "88213",
+        "date": "2023-11-02",
+        "total": "5.50"
+      },
+      "field_metrics": ["merchant_name", "receipt_number", "date", "total"]
+    },
+    {
+      "id": "doc_resume_1",
+      "type": "resume",
+      "content": "Resume of Alice Johnson\nalice.johnson@example.com\n(555) 123-4567\nLocation: San Francisco, CA\nSkills: Python, Machine Learning, SQL\nExperience: Data Scientist at DataWorks (2021-2024)\nEducation: MIT, BSc Computer Science, 2020",
+      "expected": {
+        "candidate_name": "Alice Johnson",
+        "email": "alice.johnson@example.com",
+        "location": "San Francisco, CA"
+      },
+      "field_metrics": ["candidate_name", "email", "location"]
+    }
+  ],
+  "rag_questions": [
+    {
+      "id": "q1",
+      "document_id": "doc_invoice_1",
+      "question": "What is the total amount due on the invoice?",
+      "expected_snippet": "Total Due",
+      "expected_answer_contains": ["135.00"]
+    },
+    {
+      "id": "q2",
+      "document_id": "doc_invoice_1",
+      "question": "Who is the customer billed on this invoice?",
+      "expected_answer_contains": ["Jane Doe"]
+    },
+    {
+      "id": "q3",
+      "document_id": "doc_resume_1",
+      "question": "What location does the candidate live in?",
+      "expected_answer_contains": ["San Francisco"]
+    }
+  ]
+}

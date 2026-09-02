@@ -1,0 +1,192 @@
+{
+  "overall": {
+    "fields_attempted": 14,
+    "fields_with_gold": 14,
+    "correct": 1,
+    "precision": 0.071,
+    "recall": 0.071,
+    "f1": 0.071
+  },
+  "per_field": {
+    "invoice_number": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "vendor_name": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_match": 1.0
+    },
+    "customer_name": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "invoice_date": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "subtotal": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "tax": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "total": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "merchant_name": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "receipt_number": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "date": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "candidate_name": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "email": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    },
+    "location": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": 0.0
+    }
+  },
+  "details": [
+    {
+      "id": "doc_invoice_1",
+      "fields": [
+        {
+          "field": "invoice_number",
+          "actual": "INV-1001",
+          "expected": "INV-2024-001",
+          "exact_match": false
+        },
+        {
+          "field": "vendor_name",
+          "actual": "ACME Corporation",
+          "expected": "ACME CORPORATION",
+          "exact_match": true
+        },
+        {
+          "field": "customer_name",
+          "actual": "ACME Corporation",
+          "expected": "Jane Doe",
+          "exact_match": false
+        },
+        {
+          "field": "invoice_date",
+          "actual": "2024-01-15",
+          "expected": "2024-03-15",
+          "exact_match": false
+        },
+        {
+          "field": "subtotal",
+          "actual": "100.00",
+          "expected": "125.00",
+          "exact_match": false
+        },
+        {
+          "field": "tax",
+          "actual": "100.00",
+          "expected": "10.00",
+          "exact_match": false
+        },
+        {
+          "field": "total",
+          "actual": "100.00",
+          "expected": "135.00",
+          "exact_match": false
+        }
+      ]
+    },
+    {
+      "id": "doc_receipt_1",
+      "fields": [
+        {
+          "field": "merchant_name",
+          "actual": "ACME Corporation",
+          "expected": "CORNER STORE",
+          "exact_match": false
+        },
+        {
+          "field": "receipt_number",
+          "actual": "INV-1001",
+          "expected": "88213",
+          "exact_match": false
+        },
+        {
+          "field": "date",
+          "actual": "2024-01-15",
+          "expected": "2023-11-02",
+          "exact_match": false
+        },
+        {
+          "field": "total",
+          "actual": "2.50",
+          "expected": "5.50",
+          "exact_match": false
+        }
+      ]
+    },
+    {
+      "id": "doc_resume_1",
+      "fields": [
+        {
+          "field": "candidate_name",
+          "actual": "2024-01-15",
+          "expected": "Alice Johnson",
+          "exact_match": false
+        },
+        {
+          "field": "email",
+          "actual": "contact@example.com",
+          "expected": "alice.johnson@example.com",
+          "exact_match": false
+        },
+        {
+          "field": "location",
+          "actual": "example",
+          "expected": "San Francisco, CA",
+          "exact_match": false
+        }
+      ]
+    }
+  ],
+  "provider": "default"
+}

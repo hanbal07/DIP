@@ -1,0 +1,310 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 14% 96%;
+    --foreground: 224 25% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 25% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 25% 14%;
+    --primary: 224 50% 22%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 13% 93%;
+    --secondary-foreground: 224 25% 22%;
+    --muted: 220 13% 93%;
+    --muted-foreground: 220 9% 44%;
+    --accent: 220 14% 91%;
+    --accent-foreground: 222 47% 14%;
+    --destructive: 0 68% 47%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 152 60% 34%;
+    --warning: 35 92% 38%;
+    --info: 213 75% 40%;
+    --border: 220 13% 89%;
+    --input: 220 13% 85%;
+    --ring: 224 50% 38%;
+    --radius: 0.5rem;
+    --chart-1: 224 50% 45%;
+    --chart-2: 160 60% 40%;
+    --chart-3: 28 80% 48%;
+    --chart-4: 210 70% 45%;
+    --chart-5: 280 55% 45%;
+  }
+
+  .dark {
+    --background: 224 25% 7%;
+    --foreground: 212 25% 94%;
+    --card: 224 25% 9%;
+    --card-foreground: 212 25% 94%;
+    --popover: 224 25% 9%;
+    --popover-foreground: 212 25% 94%;
+    --primary: 217 91% 62%;
+    --primary-foreground: 224 25% 7%;
+    --secondary: 220 16% 15%;
+    --secondary-foreground: 212 25% 90%;
+    --muted: 220 16% 15%;
+    --muted-foreground: 218 12% 62%;
+    --accent: 220 16% 18%;
+    --accent-foreground: 212 25% 94%;
+    --destructive: 0 62% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 152 55% 45%;
+    --warning: 38 88% 48%;
+    --info: 213 80% 55%;
+    --border: 220 16% 15%;
+    --input: 220 16% 18%;
+    --ring: 217 91% 62%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "cv02",
+      "cv03",
+      "cv04",
+      "cv11";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.16);
+    color: hsl(var(--foreground));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.015em;
+  }
+
+  /* Themed scrollbars (WebKit + Firefox). Visible but quiet. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--foreground) / 0.18) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--foreground) / 0.16);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--foreground) / 0.3);
+  }
+}
+
+@layer utilities {
+  /* ------------------------------------------------------------------ focus */
+  .focus-ring {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    transition: outline-color 120ms ease;
+  }
+  .focus-ring:focus-visible {
+    outline-color: hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  /* -------------------------------------------------- surface / verb */
+  .text-balance {
+    text-wrap: balance;
+  }
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* -------------------------------------------------- motion utilities */
+  .animate-fade-in {
+    animation: fade-in 0.28s ease-out both;
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-fade-in-down {
+    animation: fade-in-down 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-scale-in {
+    animation: scale-in 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-slide-in-bottom {
+    animation: slide-in-bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-toast-in {
+    animation: toast-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+  }
+  .animate-spin-slow {
+    animation: spin 2s linear infinite;
+  }
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  /* Scroll-reveal (driven by the <Reveal> component). */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Radix tab content entrance. */
+  [data-radix-tabs-content] {
+    animation: fade-in-up 0.26s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ----------------------------------------------------------- reduced motion
+   Respect users who request less motion: settle every animation instantly. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none !important;
+  }
+}

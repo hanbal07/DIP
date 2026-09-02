@@ -1,0 +1,11 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "backend/Dockerfile"
+rootDirectory = "backend"
+
+[deploy]
+startCommand = "alembic upgrade head && supervisord -c supervisord.conf"
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

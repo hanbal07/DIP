@@ -104,7 +104,7 @@ class Document(UUIDPrimaryKeyMixin, TimestampMixin, Base):
     #: Detected document category (invoice, receipt, ...). "unknown" when undetermined.
     document_type: Mapped[str] = mapped_column(String(64), default="unknown", index=True)
     status: Mapped[str] = mapped_column(String(32), default=DocumentStatus.UPLOADED.value)
-    review_status: Mapped[str] = mapped_column(ReviewStatus.NOT_REQUIRED.value, default=ReviewStatus.NOT_REQUIRED.value)
+    review_status: Mapped[str] = mapped_column(String(32), default=ReviewStatus.NOT_REQUIRED.value)
 
     page_count: Mapped[int] = mapped_column(Integer, default=0)
     #: Whether the source had extractable text (digital) or needed OCR.
@@ -270,7 +270,7 @@ class ExtractionResult(UUIDPrimaryKeyMixin, TimestampMixin, Base):
     #: Whether the extraction is considered low-confidence / needs review.
     confidence: Mapped[float] = mapped_column(default=0.0)
     needs_review: Mapped[bool] = mapped_column(default=False)
-    review_status: Mapped[str] = mapped_column(ReviewStatus.NOT_REQUIRED.value, default=ReviewStatus.NOT_REQUIRED.value)
+    review_status: Mapped[str] = mapped_column(String(32), default=ReviewStatus.NOT_REQUIRED.value)
     reviewed_by_user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=True)
     reviewed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=True)
     #: List of {field, from_val, to_val} human corrections for audit.
